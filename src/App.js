@@ -16,7 +16,7 @@ import PostState from "./components/context/PostState";
 function App() {
 	const postContext = useContext(PostContext);
 	//addPost,
-	const { stats, addPost } = postContext;
+	const { stats, addPost, editPost, current } = postContext;
 	//console.log(postContext);
 
 	//console.log(stats);
@@ -26,9 +26,17 @@ function App() {
 	});
 
 	useEffect(() => {
+		if (current !== null) {
+			setForm(current);
+		} else {
+			setForm({
+				weight: "",
+				date: dateFnsFormat(new Date(), "MM/dd/yyyy")
+			});
+		}
 		//set initial date to today
 		setForm({ ...form, date: dateFnsFormat(new Date(), "MM/dd/yyyy") });
-	}, []);
+	}, [postContext, current]);
 
 	//console.log(form.stats);
 
@@ -44,29 +52,11 @@ function App() {
 	};
 	const onSubmit = e => {
 		e.preventDefault();
-		addPost(form);
-		//console.log(form);
-
-		//setForm(form);
-		// const newData = {
-		// 	stats: [
-		// 		{
-		// 			id: nanoid(),
-		// 			weight,
-		// 			date
-		// 		}
-		// 	]
-		// };
-		//setForm(previousData => ({ ...previousData, ...form, ...newData }));
-
-		// setForm(previous => ({
-		// 	...previous,
-		// 	stats: [...previous.stats, ...newData.stats]
-		// }));
-
-		//console.log(...form, newData);
-		//console.log(form);
-		//console.log(newData);
+		if (current == null) {
+			addPost(form);
+		} else {
+			editPost(form);
+		}
 	};
 
 	function formatDate(date, format, locale) {
@@ -113,6 +103,13 @@ function App() {
 
 	return (
 		<div className="App">
+			<h2 className="text-primary">
+				{current ? (
+					<span style={{ color: "red" }}>Edit Record</span>
+				) : (
+					"Add Record"
+				)}
+			</h2>
 			<form onSubmit={onSubmit}>
 				<input
 					type="text"
@@ -136,7 +133,10 @@ function App() {
 						todayButton: "Today"
 					}}
 				/>
-				<button>SEND</button>
+				<input
+					type="submit"
+					value={current ? "Edit Record" : "Add Record"}
+				/>
 			</form>
 			{weight} - {date}
 			{renderLineChart}
