@@ -55,9 +55,9 @@ function RecordForm() {
 
 	const { weight, date } = form;
 
-	if (stats.length === 0) {
-		return <h4>Please add weight</h4>;
-	}
+	// if (stats.length === 0) {
+	// 	return <h4>Please add weight</h4>;
+	// }
 
 	const onChange = e => {
 		setForm({ ...form, [e.target.name]: e.target.value });
@@ -130,19 +130,19 @@ function RecordForm() {
 
 	return (
 		<div>
-			<div class="ui center aligned segment">
+			<div class="bg-color ui center aligned segment ">
 				<h2 className="text-primary">
 					{current ? (
-						<span style={{ color: "red" }}>Edit Record</span>
+						<span style={{ color: "#b81e1e" }}>Edit Record</span>
 					) : (
-						"Add Record"
+						"Enter Record"
 					)}
 				</h2>
 				<div class="ui relaxed celled list">
 					<div className="item ui">
-						<form onSubmit={onSubmit}>
-							<div className="item ui four column">
-								<div className="ui right labeled input column">
+						<form>
+							<div className="b-margin item ui four column">
+								<div className="r-margin ui right labeled input column">
 									<input
 										type="text"
 										value={weight || ""}
@@ -152,7 +152,7 @@ function RecordForm() {
 									/>
 									<div class="ui basic label">lbs</div>{" "}
 								</div>
-								<div className="ui right input column">
+								<div className="r-margin ui right input column">
 									<DayPickerInput
 										name="date"
 										value={
@@ -174,24 +174,21 @@ function RecordForm() {
 										}}
 									/>
 								</div>
-								{/* <input
-							type="submit"
-							value={current ? "Edit Record" : "Add Record"}
-							//onClick={clearForm}
-						/> */}
 								{current ? (
 									<div
-										className="ui animated fade button red column"
+										onClick={onSubmit}
+										className="fixed-m ui animated fade button purple column"
 										tabindex="0"
 									>
-										<div className="hidden content">Edit Record</div>
-										<div className="visible content">
+										<div className="visible content">Edit Record</div>
+										<div className="hidden content">
 											<i className="edit icon"></i>
 										</div>
 									</div>
 								) : (
 									<div
-										className="ui animated fade button green column"
+										onClick={onSubmit}
+										className="fixed-m ui animated fade button green column"
 										tabindex="0"
 									>
 										<div className="visible content">Add Record</div>
@@ -219,7 +216,7 @@ function RecordForm() {
 				</div>
 			</div>
 
-			<div class="ui relaxed celled animated list">
+			<div class=" ui relaxed celled animated list">
 				{sortByDate &&
 					sortByDate.map(stat => {
 						return <Stat stat={stat} key={stat.id} />;
