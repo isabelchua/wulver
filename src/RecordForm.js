@@ -111,7 +111,7 @@ function RecordForm() {
 	);
 
 	const renderLineChart = (
-		<LineChart width={1000} height={350} data={sortByDate}>
+		<LineChart width={800} height={350} data={sortByDate}>
 			<Line type="monotone" dataKey="weight" stroke="#8884d8" />
 			<CartesianGrid stroke="#ccc" />
 			<XAxis dataKey="date" />
@@ -121,52 +121,85 @@ function RecordForm() {
 
 	return (
 		<div>
-			<h2 className="text-primary">
-				{current ? (
-					<span style={{ color: "red" }}>Edit Record</span>
-				) : (
-					"Add Record"
-				)}
-				{current && (
-					<div>
-						<button onClick={clearForm}>Cancel</button>
+			<div class="ui center aligned basic segment">
+				<h2 className="text-primary">
+					{current ? (
+						<span style={{ color: "red" }}>Edit Record</span>
+					) : (
+						"Add Record"
+					)}
+				</h2>
+				<div class="ui relaxed celled list">
+					<div className="item ui">
+						<form onSubmit={onSubmit} className="item ui four column row">
+							<div className="ui right labeled input column">
+								<input
+									type="text"
+									value={weight || ""}
+									name="weight"
+									onChange={onChange}
+									placeholder="Enter Weight"
+								/>
+								<div class="ui basic label">lbs</div>{" "}
+							</div>
+							<div className="ui right labeled input column">
+								<DayPickerInput
+									name="date"
+									value={
+										date ||
+										`${dateFnsFormat(new Date(), "MM/dd/yyyy")}`
+									}
+									formatDate={formatDate}
+									placeholder={`${dateFnsFormat(
+										new Date(),
+										"MM/dd/yyyy"
+									)}`}
+									format="MM/dd/yyyy"
+									onChange={onChange}
+									onDayChange={handleDayChange}
+									parseDate={parseDate}
+									dayPickerProps={{
+										month: new Date(),
+										todayButton: "Today"
+									}}
+								/>
+							</div>
+							{/* <input
+							type="submit"
+							value={current ? "Edit Record" : "Add Record"}
+							//onClick={clearForm}
+						/> */}
+							{current ? (
+								<div className="ui animated fade button red  column">
+									<div className="hidden content">Edit Record</div>
+									<div className="visible content">
+										<i className="edit icon"></i>
+									</div>
+								</div>
+							) : (
+								<div className="ui animated fade button green  column">
+									<div className="hidden content">Add Record</div>
+									<div className="visible content">
+										<i className="plus icon"></i>
+									</div>
+								</div>
+							)}
+							{current && (
+								<div
+									className="ui button red  column"
+									onClick={clearForm}
+								>
+									<div className="content">Cancel</div>
+								</div>
+							)}
+						</form>
+						{/* {weight} - {date} */}
+						{renderLineChart}
 					</div>
-				)}
-			</h2>
-			<form onSubmit={onSubmit}>
-				<div className="ui right labeled input">
-					<input
-						type="text"
-						value={weight || ""}
-						name="weight"
-						onChange={onChange}
-						placeholder="Enter Weight"
-					/>
-					<div class="ui basic label">lbs</div>{" "}
 				</div>
-				<DayPickerInput
-					name="date"
-					value={date || `${dateFnsFormat(new Date(), "MM/dd/yyyy")}`}
-					formatDate={formatDate}
-					placeholder={`${dateFnsFormat(new Date(), "MM/dd/yyyy")}`}
-					format="MM/dd/yyyy"
-					onChange={onChange}
-					onDayChange={handleDayChange}
-					parseDate={parseDate}
-					dayPickerProps={{
-						month: new Date(),
-						todayButton: "Today"
-					}}
-				/>
-				<input
-					type="submit"
-					value={current ? "Edit Record" : "Add Record"}
-					//onClick={clearForm}
-				/>
-			</form>
-			{weight} - {date}
-			{renderLineChart}
-			<div class="ui relaxed celled  animated list">
+			</div>
+
+			<div class="ui relaxed celled animated list">
 				{sortByDate &&
 					sortByDate.map(stat => {
 						return <Stat stat={stat} key={stat.id} />;

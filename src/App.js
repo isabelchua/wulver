@@ -1,6 +1,6 @@
 import React from "react";
 import PostState from "./components/context/PostState";
-
+import "./App.css";
 import RecordForm from "./RecordForm";
 
 function App() {

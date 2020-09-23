@@ -14,20 +14,10 @@ function Stat({ stat }) {
 	};
 
 	return (
-		<div className="item">
-			<div className="right floated middle aligned content">
+		<div className="item ui five column row">
+			<div className="right floated column">
 				<div
-					className="ui animated button purple"
-					tabindex="0"
-					onClick={() => setPost(stat)}
-				>
-					<div className="hidden content">Edit</div>
-					<div className="visible content">
-						<i className="edit icon"></i>
-					</div>
-				</div>
-				<div
-					className="ui animated button red"
+					className="ui animated button red column"
 					tabindex="0"
 					onClick={onDelete}
 				>
@@ -37,11 +27,24 @@ function Stat({ stat }) {
 					</div>
 				</div>
 			</div>
-			<i className="weight middle aligned icon"></i>
-			<div className="content middle aligned ">
-				{/* <div className="header">Semantic-Org/Semantic-UI</div> */}
-				{date} <b>{weight}</b>lbs{" "}
+			<div className="right floated column">
+				<div
+					className="ui animated button purple column"
+					tabindex="0"
+					onClick={() => setPost(stat)}
+				>
+					<div className="hidden content">Edit</div>
+					<div className="visible content">
+						<i className="edit icon"></i>
+					</div>
+				</div>{" "}
 			</div>
+
+			<div className="left floated content column">
+				<i className="weight icon"></i>
+			</div>
+			<div className="left floated content column">{date}</div>
+			<div className="left floated content  column ">{weight} lbs </div>
 		</div>
 	);
 }
