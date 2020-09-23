@@ -2,7 +2,13 @@ import React, { useReducer } from "react";
 
 import PostContext from "./postContext";
 import postReducer from "./postReducer";
-import { ADD_POST, CURRENT_POST, DELETE_POST, EDIT_POST } from "../types";
+import {
+	ADD_POST,
+	CLEAR_CURRENT,
+	CURRENT_POST,
+	DELETE_POST,
+	EDIT_POST
+} from "../types";
 import { nanoid } from "nanoid";
 
 const PostState = props => {
@@ -34,6 +40,10 @@ const PostState = props => {
 		dispatch({ type: CURRENT_POST, payload: stat });
 	};
 
+	const clearCurrent = () => {
+		dispatch({ type: CLEAR_CURRENT });
+	};
+
 	return (
 		<PostContext.Provider
 			value={{
@@ -42,6 +52,7 @@ const PostState = props => {
 				deletePost,
 				editPost,
 				setPost,
+				clearCurrent,
 				current: state.current
 			}}
 		>

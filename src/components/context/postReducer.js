@@ -1,4 +1,10 @@
-import { ADD_POST, CURRENT_POST, DELETE_POST, EDIT_POST } from "../types";
+import {
+	ADD_POST,
+	CLEAR_CURRENT,
+	CURRENT_POST,
+	DELETE_POST,
+	EDIT_POST
+} from "../types";
 
 export default (state, action) => {
 	switch (action.type) {
@@ -14,6 +20,7 @@ export default (state, action) => {
 				stats: state.stats.filter(stat => stat.id !== action.payload)
 			};
 		case EDIT_POST:
+			console.log("edit");
 			return {
 				...state,
 				stats: state.stats.map(stat =>
@@ -21,7 +28,16 @@ export default (state, action) => {
 				)
 			};
 		case CURRENT_POST:
+			//console.log("current");
+			//console.log(action.payload);
 			return { ...state, current: action.payload };
+		case CLEAR_CURRENT:
+			console.log("clear");
+
+			return {
+				...state,
+				current: null
+			};
 
 		default:
 			return state;
