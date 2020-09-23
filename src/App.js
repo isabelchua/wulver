@@ -29,6 +29,7 @@ function App() {
 		//set initial date to today
 		setForm({ ...form, date: dateFnsFormat(new Date(), "MM/dd/yyyy") });
 	}, []);
+
 	//console.log(form.stats);
 
 	const { weight, date } = form;
@@ -111,41 +112,39 @@ function App() {
 	);
 
 	return (
-		<PostState>
-			<div className="App">
-				<form onSubmit={onSubmit}>
-					<input
-						type="text"
-						value={weight || ""}
-						name="weight"
-						onChange={onChange}
-						placeholder="Enter Weight"
-					/>
+		<div className="App">
+			<form onSubmit={onSubmit}>
+				<input
+					type="text"
+					value={weight || ""}
+					name="weight"
+					onChange={onChange}
+					placeholder="Enter Weight"
+				/>
 
-					<DayPickerInput
-						name="date"
-						value={date || `${dateFnsFormat(new Date(), "MM/dd/yyyy")}`}
-						formatDate={formatDate}
-						placeholder={`${dateFnsFormat(new Date(), "MM/dd/yyyy")}`}
-						format="MM/dd/yyyy"
-						onChange={onChange}
-						onDayChange={handleDayChange}
-						parseDate={parseDate}
-						dayPickerProps={{
-							month: new Date(),
-							todayButton: "Today"
-						}}
-					/>
-					<button>SEND</button>
-				</form>
-				{weight} - {date}
-				{renderLineChart}
-				{sortByDate &&
-					sortByDate.map(stat => {
-						return <Stat stat={stat} key={stat.id} />;
-					})}
-			</div>
-		</PostState>
+				<DayPickerInput
+					name="date"
+					value={date || `${dateFnsFormat(new Date(), "MM/dd/yyyy")}`}
+					formatDate={formatDate}
+					placeholder={`${dateFnsFormat(new Date(), "MM/dd/yyyy")}`}
+					format="MM/dd/yyyy"
+					onChange={onChange}
+					onDayChange={handleDayChange}
+					parseDate={parseDate}
+					dayPickerProps={{
+						month: new Date(),
+						todayButton: "Today"
+					}}
+				/>
+				<button>SEND</button>
+			</form>
+			{weight} - {date}
+			{renderLineChart}
+			{sortByDate &&
+				sortByDate.map(stat => {
+					return <Stat stat={stat} key={stat.id} />;
+				})}
+		</div>
 	);
 }
 

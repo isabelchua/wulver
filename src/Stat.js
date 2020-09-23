@@ -1,33 +1,23 @@
 import React, { useContext } from "react";
-import PostState from "./components/context/PostState";
+//import PostState from "./components/context/PostState";
+import PostContext from "./components/context/postContext";
 
 function Stat({ stat }) {
-	//const { dispatch } = useContext(PostState);
+	const postContext = useContext(PostContext);
+	const { deletePost, setPost } = postContext;
+
+	const { id, date, weight } = stat;
+
+	const onDelete = () => {
+		deletePost(id);
+	};
 
 	return (
 		<div>
 			<li>
-				{stat.date} <b>{stat.weight}</b>lbs{" "}
-				<button
-				// onClick={() =>
-				// 	dispatch({
-				// 		type: "SET_CURRENT_NOTE",
-				// 		payload: note
-				// 	})
-				// }
-				// className="edit"
-				>
-					Edit 2
-				</button>
-				<button
-				// onClick={() =>
-				// 	dispatch({
-				// 		type: "DELETE_NOTE",
-				// 		payload: note.id
-				// 	})
-				// }
-				// className="delete"
-				>
+				{date} <b>{weight}</b>lbs{" "}
+				<button onClick={() => setPost(stat)}>Edit</button>
+				<button onClick={onDelete} className="delete">
 					Delete
 				</button>
 			</li>
