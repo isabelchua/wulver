@@ -7,7 +7,14 @@ import dateFnsParse from "date-fns/parse";
 //import DayPicker from "react-day-picker";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
-import { LineChart, Line, CartesianGrid, XAxis, YAxis } from "recharts";
+import {
+	LineChart,
+	Line,
+	CartesianGrid,
+	XAxis,
+	YAxis,
+	ResponsiveContainer
+} from "recharts";
 
 import Stat from "./Stat";
 import PostContext from "./components/context/postContext";
@@ -111,17 +118,19 @@ function RecordForm() {
 	);
 
 	const renderLineChart = (
-		<LineChart width={800} height={350} data={sortByDate}>
-			<Line type="monotone" dataKey="weight" stroke="#8884d8" />
-			<CartesianGrid stroke="#ccc" />
-			<XAxis dataKey="date" />
-			<YAxis />
-		</LineChart>
+		<ResponsiveContainer width="100%" height={400}>
+			<LineChart data={sortByDate}>
+				<Line type="monotone" dataKey="weight" stroke="#8884d8" />
+				<CartesianGrid stroke="#ccc" />
+				<XAxis dataKey="date" />
+				<YAxis />
+			</LineChart>
+		</ResponsiveContainer>
 	);
 
 	return (
 		<div>
-			<div class="ui center aligned basic segment">
+			<div class="ui center aligned segment">
 				<h2 className="text-primary">
 					{current ? (
 						<span style={{ color: "red" }}>Edit Record</span>
@@ -131,70 +140,81 @@ function RecordForm() {
 				</h2>
 				<div class="ui relaxed celled list">
 					<div className="item ui">
-						<form onSubmit={onSubmit} className="item ui four column row">
-							<div className="ui right labeled input column">
-								<input
-									type="text"
-									value={weight || ""}
-									name="weight"
-									onChange={onChange}
-									placeholder="Enter Weight"
-								/>
-								<div class="ui basic label">lbs</div>{" "}
-							</div>
-							<div className="ui right labeled input column">
-								<DayPickerInput
-									name="date"
-									value={
-										date ||
-										`${dateFnsFormat(new Date(), "MM/dd/yyyy")}`
-									}
-									formatDate={formatDate}
-									placeholder={`${dateFnsFormat(
-										new Date(),
-										"MM/dd/yyyy"
-									)}`}
-									format="MM/dd/yyyy"
-									onChange={onChange}
-									onDayChange={handleDayChange}
-									parseDate={parseDate}
-									dayPickerProps={{
-										month: new Date(),
-										todayButton: "Today"
-									}}
-								/>
-							</div>
-							{/* <input
+						<form onSubmit={onSubmit}>
+							<div className="item ui four column">
+								<div className="ui right labeled input column">
+									<input
+										type="text"
+										value={weight || ""}
+										name="weight"
+										onChange={onChange}
+										placeholder="Enter Weight"
+									/>
+									<div class="ui basic label">lbs</div>{" "}
+								</div>
+								<div className="ui right input column">
+									<DayPickerInput
+										name="date"
+										value={
+											date ||
+											`${dateFnsFormat(new Date(), "MM/dd/yyyy")}`
+										}
+										formatDate={formatDate}
+										placeholder={`${dateFnsFormat(
+											new Date(),
+											"MM/dd/yyyy"
+										)}`}
+										format="MM/dd/yyyy"
+										onChange={onChange}
+										onDayChange={handleDayChange}
+										parseDate={parseDate}
+										dayPickerProps={{
+											month: new Date(),
+											todayButton: "Today"
+										}}
+									/>
+								</div>
+								{/* <input
 							type="submit"
 							value={current ? "Edit Record" : "Add Record"}
 							//onClick={clearForm}
 						/> */}
-							{current ? (
-								<div className="ui animated fade button red  column">
-									<div className="hidden content">Edit Record</div>
-									<div className="visible content">
-										<i className="edit icon"></i>
+								{current ? (
+									<div
+										className="ui animated fade button red column"
+										tabindex="0"
+									>
+										<div className="hidden content">Edit Record</div>
+										<div className="visible content">
+											<i className="edit icon"></i>
+										</div>
 									</div>
-								</div>
-							) : (
-								<div className="ui animated fade button green  column">
-									<div className="hidden content">Add Record</div>
-									<div className="visible content">
-										<i className="plus icon"></i>
+								) : (
+									<div
+										className="ui animated fade button green column"
+										tabindex="0"
+									>
+										<div className="visible content">Add Record</div>
+										<div className="hidden content">
+											<i className="plus icon"></i>
+										</div>
 									</div>
-								</div>
-							)}
-							{current && (
-								<div
-									className="ui button red  column"
-									onClick={clearForm}
-								>
-									<div className="content">Cancel</div>
-								</div>
-							)}
+								)}
+								{current && (
+									<div
+										className="ui button red column"
+										tabindex="0"
+										onClick={clearForm}
+									>
+										<div className="content">Cancel</div>
+									</div>
+								)}
+							</div>
 						</form>
 						{/* {weight} - {date} */}
-						{renderLineChart}
+						<div className="four column centered row">
+							<div class="column">{renderLineChart}</div>
+						</div>
 					</div>
 				</div>
 			</div>
