@@ -14,13 +14,11 @@ export default (state, action) => {
 				stats: [...state.stats, action.payload]
 			};
 		case DELETE_POST:
-			console.log(state.stats.filter(stat => stat.id !== action.payload));
 			return {
 				...state,
 				stats: state.stats.filter(stat => stat.id !== action.payload)
 			};
 		case EDIT_POST:
-			console.log("edit");
 			return {
 				...state,
 				stats: state.stats.map(stat =>
@@ -28,12 +26,8 @@ export default (state, action) => {
 				)
 			};
 		case CURRENT_POST:
-			//console.log("current");
-			//console.log(action.payload);
 			return { ...state, current: action.payload };
 		case CLEAR_CURRENT:
-			console.log("clear");
-
 			return {
 				...state,
 				current: null

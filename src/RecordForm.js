@@ -134,14 +134,16 @@ function RecordForm() {
 				)}
 			</h2>
 			<form onSubmit={onSubmit}>
-				<input
-					type="text"
-					value={weight || ""}
-					name="weight"
-					onChange={onChange}
-					placeholder="Enter Weight"
-				/>
-
+				<div className="ui right labeled input">
+					<input
+						type="text"
+						value={weight || ""}
+						name="weight"
+						onChange={onChange}
+						placeholder="Enter Weight"
+					/>
+					<div class="ui basic label">lbs</div>{" "}
+				</div>
 				<DayPickerInput
 					name="date"
 					value={date || `${dateFnsFormat(new Date(), "MM/dd/yyyy")}`}
@@ -164,10 +166,12 @@ function RecordForm() {
 			</form>
 			{weight} - {date}
 			{renderLineChart}
-			{sortByDate &&
-				sortByDate.map(stat => {
-					return <Stat stat={stat} key={stat.id} />;
-				})}
+			<div class="ui relaxed celled  animated list">
+				{sortByDate &&
+					sortByDate.map(stat => {
+						return <Stat stat={stat} key={stat.id} />;
+					})}
+			</div>
 		</div>
 	);
 }

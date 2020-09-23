@@ -14,14 +14,34 @@ function Stat({ stat }) {
 	};
 
 	return (
-		<div>
-			<li>
+		<div className="item">
+			<div className="right floated middle aligned content">
+				<div
+					className="ui animated button purple"
+					tabindex="0"
+					onClick={() => setPost(stat)}
+				>
+					<div className="hidden content">Edit</div>
+					<div className="visible content">
+						<i className="edit icon"></i>
+					</div>
+				</div>
+				<div
+					className="ui animated button red"
+					tabindex="0"
+					onClick={onDelete}
+				>
+					<div className="hidden content">Delete</div>
+					<div className="visible content">
+						<i className="trash icon"></i>
+					</div>
+				</div>
+			</div>
+			<i className="weight middle aligned icon"></i>
+			<div className="content middle aligned ">
+				{/* <div className="header">Semantic-Org/Semantic-UI</div> */}
 				{date} <b>{weight}</b>lbs{" "}
-				<button onClick={() => setPost(stat)}>Edit</button>
-				<button onClick={onDelete} className="delete">
-					Delete
-				</button>
-			</li>
+			</div>
 		</div>
 	);
 }
