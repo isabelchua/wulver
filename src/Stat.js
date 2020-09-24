@@ -22,28 +22,25 @@ function Stat({ stat }) {
 				<div className="flex-center">{date}</div>
 				<div className="flex-center">{weight} lbs </div>
 				<div className="button-stack">
-					<div className="">
-						<div
-							className="ui animated button purple column"
-							tabindex="0"
-							onClick={() => setPost(stat)}
-						>
-							<div className="hidden content">Edit</div>
-							<div className="visible content">
-								<i className="edit icon"></i>
-							</div>
+					<div
+						className="ui animated button purple column"
+						tabindex="0"
+						onClick={() => setPost(stat)}
+					>
+						<div className="hidden content">Edit</div>
+						<div className="visible content">
+							<i className="edit icon"></i>
 						</div>
 					</div>
-					<div className="right-p">
-						<div
-							className="ui animated button red column"
-							tabindex="0"
-							onClick={onDelete}
-						>
-							<div className="hidden content">Delete</div>
-							<div className="visible content">
-								<i className="trash icon"></i>
-							</div>
+
+					<div
+						className="ui animated button red column"
+						tabindex="0"
+						onClick={onDelete}
+					>
+						<div className="hidden content">Delete</div>
+						<div className="visible content">
+							<i className="trash icon"></i>
 						</div>
 					</div>
 				</div>

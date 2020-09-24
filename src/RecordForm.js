@@ -37,10 +37,10 @@ function RecordForm() {
 		if (current !== null) {
 			setForm(current);
 		} else {
-			// setForm({
-			// 	weight: "2",
-			// 	date: dateFnsFormat(new Date(), "MM/dd/yyyy")
-			// });
+			setForm({
+				weight: "",
+				date: dateFnsFormat(new Date(), "MM/dd/yyyy")
+			});
 		}
 		//set initial date to today
 		//console.log(form);
@@ -138,6 +138,7 @@ function RecordForm() {
 						"Enter Record"
 					)}
 				</h2>
+				<div class="ui hidden divider"></div>
 				<div class="ui relaxed celled list">
 					<div className="item ui">
 						<form>
@@ -217,6 +218,26 @@ function RecordForm() {
 			</div>
 
 			<div class=" ui relaxed celled animated list">
+				<div className="flex-center-main-upper">
+					<div className="flex-center-main border-bot">
+						<div
+							className="flex-center center-horizontal-align"
+							style={{ marginRight: "30px" }}
+						></div>
+						<div className="flex-center center-horizontal-align">
+							Date
+						</div>
+						<div className="flex-center center-horizontal-align">
+							Weight{" "}
+						</div>
+						<div
+							className="button-stack center-horizontal-align"
+							style={{ marginRight: "30px" }}
+						>
+							Edit / Delete
+						</div>
+					</div>
+				</div>
 				{sortByDate &&
 					sortByDate.map(stat => {
 						return <Stat stat={stat} key={stat.id} />;
