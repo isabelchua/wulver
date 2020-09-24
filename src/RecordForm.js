@@ -181,7 +181,7 @@ function RecordForm() {
 										className="fixed-m ui animated fade button purple column"
 										tabindex="0"
 									>
-										<div className="visible content">Edit Record</div>
+										<div className="visible content">Save Edit</div>
 										<div className="hidden content">
 											<i className="edit icon"></i>
 										</div>

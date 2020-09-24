@@ -7,12 +7,14 @@
 		"@testing-library/jest-dom": "^4.2.4",
 		"@testing-library/react": "^9.3.2",
 		"@testing-library/user-event": "^7.1.2",
+		"axios": "^0.20.0",
 		"date-fns": "^2.16.1",
 		"moment": "^2.29.0",
 		"nanoid": "^3.1.12",
 		"react": "^16.13.1",
 		"react-day-picker": "^7.4.8",
 		"react-dom": "^16.13.1",
+		"react-router-dom": "^5.2.0",
 		"react-scripts": "3.4.3",
 		"recharts": "^1.8.5"
 	},
@@ -20,7 +22,10 @@
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
-		"eject": "react-scripts eject"
+		"eject": "react-scripts eject",
+		"backend": "npm start --prefix backend",
+		"backendinstall": "npm install --prefix backend",
+		"dev": "concurrently \"npm run server\" \"npm run backend\""
 	},
 	"eslintConfig": {
 		"extends": "react-app"
