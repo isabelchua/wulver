@@ -1,0 +1,80 @@
+
+###
+// GET ALL USERS
+GET http://localhost:4001/api/users
+
+
+###
+// REGISTER USER
+POST http://localhost:4001/api/users
+Content-Type: application/json
+
+{
+			"name": "Mac Yu",
+			"email": "macyu@gmail.com",
+			"password": "12345"
+}
+
+//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY2YzE3ODBjODNiOTI2NDg0YzM4NWRiIn0sImlhdCI6MTYwMDkxOTQyNCwiZXhwIjoxNjAxMjc5NDI0fQ.2h5nX60iogy9INypWca8JESh_pMMXlryH-XSL0TTNFc
+
+###
+// LOGIN USER
+POST http://localhost:4001/api/auth
+Content-Type: application/json
+
+{
+			"email": "macyu@gmail.com",
+			"password": "12345"
+}
+###
+// LOGIN USER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY2YzE3ODBjODNiOTI2NDg0YzM4NWRiIn0sImlhdCI6MTYwMDkxOTUyMiwiZXhwIjoxNjAxMjc5NTIyfQ.JdzXd5BmRx-39bh-quZCPNVSqSDTt8udQxzx9Mlcdp0
+
+GET http://localhost:4001/api/auth
+Authorization: w-auth-token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY1OTg0MWM3MzczYjYyZDcwNzUzNmU1In0sImlhdCI6MTU5OTcwNTQxOCwiZXhwIjoxNTk5ODA1NDE4fQ.IBH_vrceZw_0oODnrn3GVQ169xaS3yWQZvTKQCBFVrg
+
+###
+GET http://localhost:4001/api/shops/5f5ada9ee9e6931cbcea8500
+
+###
+GET http://localhost:4001/api/posts/5f5ada9ee9e6931cbcea8500
+
+###
+// GET ALL SHOPS
+GET http://localhost:4001/api/
+
+###
+POST http://localhost:4001/api/
+Content-Type: application/json
+
+{
+	"name": "Kagayanon",
+	"address": "Cagayan de Oro"
+}
+
+###
+
+GET http://localhost:4001/api/auth
+// get log in user
+
+###
+POST http://localhost:4001/api/auth
+// log in user
+
+###
+// POST a REVIEW in a SHOP
+POST http://localhost:4001/api/posts/5f5ada9ee9e6931cbcea8500
+Content-Type: application/json
+
+{
+	"review": "I loved their food!",
+	"rating": 4
+}
+
+###
+GET http://localhost:4001/api/posts/all
+
+###
+
+GET http://localhost:4001/api/posts/5f5ada9ee9e6931cbcea8500
+
+###
