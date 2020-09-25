@@ -20,6 +20,7 @@ import {
 import Stat from "./Stat";
 import PostContext from "./components/context/postContext";
 import AuthContext from "./components/context/auth/authContext";
+import Footer from "./components/layout/Footer";
 
 function RecordForm() {
 	const postContext = useContext(PostContext);
@@ -282,6 +283,7 @@ function RecordForm() {
 					<Spinner />
 				)}
 			</div>
+			<Footer />
 		</div>
 	);
 }
