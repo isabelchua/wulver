@@ -26,7 +26,7 @@ export default (state, action) => {
 		case DELETE_POST:
 			return {
 				...state,
-				stats: state.stats.filter(stat => stat.id !== action.payload),
+				stats: state.stats.filter(stat => stat._id !== action.payload),
 				loading: false
 			};
 		case CLEAR_POSTS:

@@ -113,7 +113,7 @@ router.delete("/:id", auth, async (req, res) => {
 			return res.status(401).json({ msg: "Not Authorized" });
 		}
 
-		await stat.findByIdAndRemove(req.params.id);
+		await Stat.findByIdAndRemove(req.params.id);
 
 		res.json({ msg: "stat removed" });
 	} catch (err) {

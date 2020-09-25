@@ -34,7 +34,7 @@ const PostState = props => {
 			const res = await axios.get("/api/stats");
 			dispatch({ type: GET_POSTS, payload: res.data });
 		} catch (err) {
-			dispatch({ type: POST_ERROR, payload: err.resonse.msg });
+			dispatch({ type: POST_ERROR, payload: err.response.msg });
 		}
 	};
 
@@ -51,12 +51,17 @@ const PostState = props => {
 			const res = await axios.post("/api/stats", stat, config);
 			dispatch({ type: ADD_POST, payload: res.data });
 		} catch (err) {
-			dispatch({ type: POST_ERROR, payload: err.resonse.msg });
+			dispatch({ type: POST_ERROR, payload: err.response.msg });
 		}
 	};
 
-	const deletePost = id => {
-		dispatch({ type: DELETE_POST, payload: id });
+	const deletePost = async id => {
+		try {
+			const res = await axios.delete(`/api/stats/${id}`);
+			dispatch({ type: DELETE_POST, payload: id });
+		} catch (err) {
+			dispatch({ type: POST_ERROR, payload: err.response.msg });
+		}
 	};
 
 	const clearPosts = () => {
