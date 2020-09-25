@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { DateUtils } from "react-day-picker";
 import dateFnsFormat from "date-fns/format";
 import dateFnsParse from "date-fns/parse";
+import Spinner from "./components/layout/Spinner";
 
 //import DayPicker from "react-day-picker";
 import DayPickerInput from "react-day-picker/DayPickerInput";
@@ -22,8 +23,20 @@ import PostContext from "./components/context/postContext";
 function RecordForm() {
 	const postContext = useContext(PostContext);
 
-	const { stats, addPost, editPost, current, clearCurrent } = postContext;
-	//console.log(postContext);
+	const {
+		stats,
+		addPost,
+		editPost,
+		current,
+		clearCurrent,
+		loading,
+		getPosts
+	} = postContext;
+
+	useEffect(() => {
+		getPosts();
+		//eslint-disable-next-line
+	}, []);
 
 	//console.log(stats);
 
@@ -235,10 +248,15 @@ function RecordForm() {
 						</div>
 					</div>
 				</div>
-				{sortByDate &&
+
+				{stats !== null && !loading ? (
+					sortByDate &&
 					sortByDate.map(stat => {
 						return <Stat stat={stat} key={stat._id} />;
-					})}
+					})
+				) : (
+					<Spinner />
+				)}
 			</div>
 		</div>
 	);

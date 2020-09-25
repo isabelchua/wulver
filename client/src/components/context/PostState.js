@@ -79,6 +79,7 @@ const PostState = props => {
 				editPost,
 				setPost,
 				clearCurrent,
+				getPosts,
 				error: state.error,
 				current: state.current
 			}}
