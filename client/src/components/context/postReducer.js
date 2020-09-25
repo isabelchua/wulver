@@ -1,16 +1,37 @@
 import {
 	ADD_POST,
+	AUTH_ERROR,
 	CLEAR_CURRENT,
 	CLEAR_POSTS,
 	CURRENT_POST,
 	DELETE_POST,
 	EDIT_POST,
 	GET_POSTS,
-	POST_ERROR
+	POST_ERROR,
+	REGISTER_FAIL,
+	USER_LOADED
 } from "../types";
 
 export default (state, action) => {
 	switch (action.type) {
+		case USER_LOADED:
+			return {
+				...state,
+				isAuthenticated: true,
+				loading: false,
+				user: action.payload
+			};
+		case REGISTER_FAIL:
+		case AUTH_ERROR:
+			localStorage.removeItem("token");
+			return {
+				...state,
+				token: null,
+				isAuthenticated: false,
+				loading: false,
+				user: null,
+				error: action.payload
+			};
 		case GET_POSTS:
 			return {
 				...state,

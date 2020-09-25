@@ -19,9 +19,16 @@ import {
 
 import Stat from "./Stat";
 import PostContext from "./components/context/postContext";
+import AuthContext from "./components/context/auth/authContext";
 
 function RecordForm() {
 	const postContext = useContext(PostContext);
+	const authContext = useContext(AuthContext);
+
+	useEffect(() => {
+		authContext.loadUser();
+		// eslint-disable-next-line
+	}, []);
 
 	const {
 		stats,

@@ -93,14 +93,14 @@ const PostState = props => {
 	};
 
 	//LOAD USER
-	const loadUser = async () => {
-		try {
-			const res = await axios.get("api/auth");
-			dispatch({ type: USER_LOADED, payload: res.data });
-		} catch (err) {
-			dispatch({ type: AUTH_ERROR });
-		}
-	};
+	// const loadUser = async () => {
+	// 	try {
+	// 		const res = await axios.get("api/auth");
+	// 		dispatch({ type: USER_LOADED, payload: res.data });
+	// 	} catch (err) {
+	// 		dispatch({ type: AUTH_ERROR });
+	// 	}
+	// };
 
 	return (
 		<PostContext.Provider
