@@ -7,26 +7,36 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import AlertState from "./components/context/alert/AlertState";
 import AuthState from "./components/context/auth/AuthState";
+import setAuthToken from "./components/utils/setAuthToken";
+import Navbar from "./components/layout/Navbar";
+import Alerts from "./components/layout/Alerts";
+
+if (localStorage.token) {
+	setAuthToken(localStorage.token);
+}
 
 function App() {
 	return (
-		<div className="App">
+		<>
 			<AuthState>
 				<AlertState>
 					<PostState>
 						<Router>
-							<Switch>
-								<Route exact path="/" component={RecordForm} />
+							<Navbar />
+							<div className="App">
+								<Alerts />
+								<Switch>
+									<Route exact path="/" component={RecordForm} />
 
-								<Route exact path="/register" component={Register} />
-								<Route exact path="/login" component={Login} />
-								{/* <RecordForm /> */}
-							</Switch>
+									<Route exact path="/register" component={Register} />
+									<Route exact path="/login" component={Login} />
+								</Switch>
+							</div>
 						</Router>
 					</PostState>
 				</AlertState>
 			</AuthState>
-		</div>
+		</>
 	);
 }
 
