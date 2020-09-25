@@ -3,7 +3,7 @@ import { nanoid } from "nanoid";
 import AlertContext from "./alertContext";
 import alertReducer from "./alertReducer";
 
-import { SET_ALERT, REMOVE_ALERT } from "../types";
+import { SET_ALERT, REMOVE_ALERT } from "../../types";
 
 const AlertState = props => {
 	const initialState = [];
