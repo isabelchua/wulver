@@ -3,27 +3,38 @@ import {
 	CLEAR_CURRENT,
 	CURRENT_POST,
 	DELETE_POST,
-	EDIT_POST
+	EDIT_POST,
+	GET_POSTS,
+	POST_ERROR
 } from "../types";
 
 export default (state, action) => {
 	switch (action.type) {
+		case GET_POSTS:
+			return {
+				...state,
+				stats: action.payload,
+				loading: false
+			};
 		case ADD_POST:
 			return {
 				...state,
-				stats: [...state.stats, action.payload]
+				stats: [...state.stats, action.payload],
+				loading: false
 			};
 		case DELETE_POST:
 			return {
 				...state,
-				stats: state.stats.filter(stat => stat.id !== action.payload)
+				stats: state.stats.filter(stat => stat.id !== action.payload),
+				loading: false
 			};
 		case EDIT_POST:
 			return {
 				...state,
 				stats: state.stats.map(stat =>
 					stat.id === action.payload.id ? action.payload : stat
-				)
+				),
+				loading: false
 			};
 		case CURRENT_POST:
 			return { ...state, current: action.payload };
@@ -31,6 +42,11 @@ export default (state, action) => {
 			return {
 				...state,
 				current: null
+			};
+		case POST_ERROR:
+			return {
+				...state,
+				error: action.payload
 			};
 
 		default:

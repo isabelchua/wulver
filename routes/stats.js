@@ -30,18 +30,24 @@ router.get("/", auth, async (req, res) => {
 //require name when editing
 router.post(
 	"/",
-	[auth, [check("weight", "Weight is required").not().isEmpty()]],
+	[
+		auth,
+		[check("weight", "Weight is required").not().isEmpty()],
+		[check("date", "Date is required").not().isEmpty()]
+	],
+
 	async (req, res) => {
 		const errors = validationResult(req);
 		if (!errors.isEmpty()) {
 			return res.status(400).json({ errors: errors.array() });
 		}
 
-		const { weight } = req.body;
+		const { weight, date } = req.body;
 
 		try {
 			const newStat = new Stat({
 				weight,
+				date,
 				user: req.user.id
 			});
 			const stat = await newStat.save();
@@ -60,11 +66,12 @@ router.post(
 
 router.put("/:id", auth, async (req, res) => {
 	//res.send('Update stat');
-	const { weight } = req.body;
+	const { weight, date } = req.body;
 
 	// build a stat object
 	const statFields = {};
 	if (weight) statFields.weight = weight;
+	if (date) statFields.date = date;
 
 	try {
 		let stat = await Stat.findById(req.params.id);

@@ -11,6 +11,10 @@ const StatSchema = mongoose.Schema({
 		required: true
 	},
 	date: {
+		type: String,
+		required: true
+	},
+	date_log: {
 		type: Date,
 		default: Date.now
 	}

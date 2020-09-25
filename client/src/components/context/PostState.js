@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-
+import axios from "axios";
 import PostContext from "./postContext";
 import postReducer from "./postReducer";
 import {
@@ -7,7 +7,10 @@ import {
 	CLEAR_CURRENT,
 	CURRENT_POST,
 	DELETE_POST,
-	EDIT_POST
+	EDIT_POST,
+	POST_ERROR,
+	GET_POSTS,
+	CLEAR_ERRORS
 } from "../types";
 import { nanoid } from "nanoid";
 
@@ -18,14 +21,37 @@ const PostState = props => {
 			{ id: 2, date: "09/22/2020", weight: 110 }
 		],
 		currentStat: null,
-		current: null
+		current: null,
+		error: null
 	};
 
 	const [state, dispatch] = useReducer(postReducer, initialState);
 
-	const addPost = stat => {
-		stat.id = nanoid();
-		dispatch({ type: ADD_POST, payload: stat });
+	// get contacts
+	const getPosts = async () => {
+		try {
+			const res = await axios.get("/api/stats");
+			dispatch({ type: GET_POSTS, payload: res.data });
+		} catch (err) {
+			dispatch({ type: POST_ERROR, payload: err.resonse.msg });
+		}
+	};
+
+	//add post
+
+	const addPost = async stat => {
+		//stat.id = nanoid();
+		const config = {
+			headers: {
+				"Content-Type": "application/json"
+			}
+		};
+		try {
+			const res = await axios.post("/api/stats", stat, config);
+			dispatch({ type: ADD_POST, payload: res.data });
+		} catch (err) {
+			dispatch({ type: POST_ERROR, payload: err.resonse.msg });
+		}
 	};
 
 	const deletePost = id => {
@@ -53,6 +79,7 @@ const PostState = props => {
 				editPost,
 				setPost,
 				clearCurrent,
+				error: state.error,
 				current: state.current
 			}}
 		>

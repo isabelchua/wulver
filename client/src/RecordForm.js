@@ -237,7 +237,7 @@ function RecordForm() {
 				</div>
 				{sortByDate &&
 					sortByDate.map(stat => {
-						return <Stat stat={stat} key={stat.id} />;
+						return <Stat stat={stat} key={stat._id} />;
 					})}
 			</div>
 		</div>

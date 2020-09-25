@@ -388,7 +388,7 @@ img {
 	color: #888;
 }
 
-/* input[type="text"],
+.form-container input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="date"],
@@ -400,8 +400,7 @@ textarea {
 	padding: 0.4rem;
 	font-size: 1.2rem;
 	border: 1px solid #ccc;
-} */
-
+}
 .radiob {
 	margin: 10px 10px 10px 25px;
 }
