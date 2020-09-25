@@ -41,7 +41,7 @@ export default (state, action) => {
 			return {
 				...state,
 				stats: state.stats.map(stat =>
-					stat.id === action.payload.id ? action.payload : stat
+					stat._id === action.payload._id ? action.payload : stat
 				),
 				loading: false
 			};

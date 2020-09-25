@@ -11,7 +11,9 @@ import {
 	POST_ERROR,
 	GET_POSTS,
 	CLEAR_ERRORS,
-	CLEAR_POSTS
+	CLEAR_POSTS,
+	USER_LOADED,
+	AUTH_ERROR
 } from "../types";
 import { nanoid } from "nanoid";
 
@@ -64,12 +66,22 @@ const PostState = props => {
 		}
 	};
 
-	const clearPosts = () => {
-		dispatch({ type: CLEAR_POSTS });
+	const editPost = async stat => {
+		const config = {
+			headers: {
+				"Content-Type": "application/json"
+			}
+		};
+		try {
+			const res = await axios.put(`/api/stats/${stat._id}`, stat, config);
+			dispatch({ type: EDIT_POST, payload: res.data });
+		} catch (err) {
+			dispatch({ type: POST_ERROR, payload: err.response.msg });
+		}
 	};
 
-	const editPost = stat => {
-		dispatch({ type: EDIT_POST, payload: stat });
+	const clearPosts = () => {
+		dispatch({ type: CLEAR_POSTS });
 	};
 
 	const setPost = stat => {
@@ -78,6 +90,16 @@ const PostState = props => {
 
 	const clearCurrent = () => {
 		dispatch({ type: CLEAR_CURRENT });
+	};
+
+	//LOAD USER
+	const loadUser = async () => {
+		try {
+			const res = await axios.get("api/auth");
+			dispatch({ type: USER_LOADED, payload: res.data });
+		} catch (err) {
+			dispatch({ type: AUTH_ERROR });
+		}
 	};
 
 	return (
