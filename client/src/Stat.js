@@ -6,10 +6,10 @@ function Stat({ stat }) {
 	const postContext = useContext(PostContext);
 	const { deletePost, setPost, clearCurrent } = postContext;
 
-	const { id, date, weight } = stat;
+	const { _id, date, weight } = stat;
 
 	const onDelete = () => {
-		deletePost(id);
+		deletePost(_id);
 		clearCurrent();
 	};
 

@@ -10,7 +10,8 @@ import {
 	EDIT_POST,
 	POST_ERROR,
 	GET_POSTS,
-	CLEAR_ERRORS
+	CLEAR_ERRORS,
+	CLEAR_POSTS
 } from "../types";
 import { nanoid } from "nanoid";
 
@@ -58,6 +59,10 @@ const PostState = props => {
 		dispatch({ type: DELETE_POST, payload: id });
 	};
 
+	const clearPosts = () => {
+		dispatch({ type: CLEAR_POSTS });
+	};
+
 	const editPost = stat => {
 		dispatch({ type: EDIT_POST, payload: stat });
 	};
@@ -80,6 +85,7 @@ const PostState = props => {
 				setPost,
 				clearCurrent,
 				getPosts,
+				clearPosts,
 				error: state.error,
 				current: state.current
 			}}

@@ -1,6 +1,7 @@
 import {
 	ADD_POST,
 	CLEAR_CURRENT,
+	CLEAR_POSTS,
 	CURRENT_POST,
 	DELETE_POST,
 	EDIT_POST,
@@ -27,6 +28,14 @@ export default (state, action) => {
 				...state,
 				stats: state.stats.filter(stat => stat.id !== action.payload),
 				loading: false
+			};
+		case CLEAR_POSTS:
+			return {
+				...state,
+				contacts: null,
+				filtered: null,
+				error: null,
+				current: null
 			};
 		case EDIT_POST:
 			return {
