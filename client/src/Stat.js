@@ -24,7 +24,6 @@ function Stat({ stat }) {
 				<div className="button-stack">
 					<div
 						className="ui animated button purple column"
-						tabindex="0"
 						onClick={() => setPost(stat)}
 					>
 						<div className="hidden content">Edit</div>
@@ -35,7 +34,6 @@ function Stat({ stat }) {
 
 					<div
 						className="ui animated button red column"
-						tabindex="0"
 						onClick={onDelete}
 					>
 						<div className="hidden content">Delete</div>

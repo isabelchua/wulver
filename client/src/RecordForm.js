@@ -129,8 +129,8 @@ function RecordForm() {
 	);
 
 	return (
-		<div>
-			<div class="bg-color ui center aligned segment ">
+		<div className="record-form">
+			<div className="bg-color ui center aligned segment ">
 				<h2 className="text-primary">
 					{current ? (
 						<span style={{ color: "#b81e1e" }}>Edit Record</span>
@@ -138,8 +138,8 @@ function RecordForm() {
 						"Enter Record"
 					)}
 				</h2>
-				<div class="ui hidden divider"></div>
-				<div class="ui relaxed celled list">
+				<div className="ui hidden divider"></div>
+				<div className="ui relaxed celled list">
 					<div className="item ui">
 						<form>
 							<div className="b-margin item ui four column">
@@ -151,7 +151,7 @@ function RecordForm() {
 										onChange={onChange}
 										placeholder="Enter Weight"
 									/>
-									<div class="ui basic label">lbs</div>{" "}
+									<div className="ui basic label">lbs</div>{" "}
 								</div>
 								<div className="r-margin ui right input column">
 									<DayPickerInput
@@ -179,7 +179,6 @@ function RecordForm() {
 									<div
 										onClick={onSubmit}
 										className="fixed-m ui animated fade button purple column"
-										tabindex="0"
 									>
 										<div className="visible content">Save Edit</div>
 										<div className="hidden content">
@@ -190,7 +189,6 @@ function RecordForm() {
 									<div
 										onClick={onSubmit}
 										className="fixed-m ui animated fade button green column"
-										tabindex="0"
 									>
 										<div className="visible content">Add Record</div>
 										<div className="hidden content">
@@ -201,7 +199,6 @@ function RecordForm() {
 								{current && (
 									<div
 										className="ui button red column"
-										tabindex="0"
 										onClick={clearForm}
 									>
 										<div className="content">Cancel</div>
@@ -211,13 +208,13 @@ function RecordForm() {
 						</form>
 						{/* {weight} - {date} */}
 						<div className="four column centered row">
-							<div class="column">{renderLineChart}</div>
+							<div className="column">{renderLineChart}</div>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<div class=" ui relaxed celled animated list">
+			<div className=" ui relaxed celled animated list">
 				<div className="flex-center-main-upper">
 					<div className="flex-center-main border-bot">
 						<div
