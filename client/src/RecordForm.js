@@ -40,6 +40,18 @@ function RecordForm() {
 		getPosts
 	} = postContext;
 
+	const { isAuthenticated } = authContext;
+
+	// if (!isAuthenticated) {
+	// 	//if authenticated then go to home page
+	// 	return <h4>Register and login to save your progress!</h4>;
+	// }
+
+	//authContext.loadUser();
+	// if (authContext.isAuthenticated !== null) {
+
+	// }
+
 	useEffect(() => {
 		getPosts();
 		//eslint-disable-next-line
@@ -150,6 +162,11 @@ function RecordForm() {
 
 	return (
 		<div className="record-form">
+			{!isAuthenticated ? (
+				<h2>Register/Login to save your progress!</h2>
+			) : (
+				" "
+			)}
 			<div className="bg-color ui center aligned segment ">
 				<h2 className="text-primary">
 					{current ? (
