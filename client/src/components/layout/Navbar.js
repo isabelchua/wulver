@@ -21,7 +21,7 @@ const Navbar = ({ title, icon }) => {
 		<Fragment>
 			<li>Hello {user && user.name}</li>
 			<li>
-				<a onClick={onLogout} href="#!">
+				<a onClick={onLogout} href="/">
 					<i className="sign-out icon"></i>{" "}
 					<span className="hide-sm">Logout</span>
 				</a>
@@ -42,9 +42,11 @@ const Navbar = ({ title, icon }) => {
 
 	return (
 		<div className="navbar bg-primary">
-			<h1>
-				<i className="cogs icon" /> Wulver
-			</h1>
+			<a href="/">
+				<h1>
+					<i className="cogs icon" /> Wulver
+				</h1>
+			</a>
 			<ul>{isAuthenticated ? authLinks : guestLinks} </ul>
 		</div>
 	);

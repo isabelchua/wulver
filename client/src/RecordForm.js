@@ -142,13 +142,19 @@ function RecordForm() {
 	// 		new Date(...b.date.split("/").reverse())
 	// );
 
-	const sortByDate = stats.sort((a, b) =>
-		a.date
-			.split("/")
-			.reverse()
-			.join()
-			.localeCompare(b.date.split("/").reverse().join())
-	);
+	// const sortByDate = stats.sort((a, b) =>
+	// 	a.date
+	// 		.split("/")
+	// 		.reverse()
+	// 		.join()
+	// 		.localeCompare(b.date.split("/").reverse().join())
+	// );
+
+	const sortByDate = stats.sort(function (a, b) {
+		var dateA = new Date(a.date),
+			dateB = new Date(b.date);
+		return dateA - dateB;
+	});
 
 	const renderLineChart = (
 		<ResponsiveContainer width="100%" height={400}>
@@ -164,10 +170,19 @@ function RecordForm() {
 	return (
 		<div className="record-form">
 			{!isAuthenticated ? (
-				<h2>Register/Login to save your progress!</h2>
+				<div>
+					<h2>Register/Login to save your progress!</h2>
+					<div className="ui grid">
+						<div className="four wide column">Age: 34</div>
+						<div className="four wide column">Goal Weight: 105lbs</div>
+						<div className="four wide column">Height: 5'2"</div>
+						<div className="four wide column">Gender: F</div>
+					</div>
+				</div>
 			) : (
 				" "
 			)}
+
 			<div className="bg-color ui center aligned segment ">
 				<h2 className="text-primary">
 					{current ? (

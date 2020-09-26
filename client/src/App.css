@@ -2,11 +2,11 @@
 
 /* Global Styles */
 :root {
-	--primary-color: #2d5055;
-	--dark-color: #343536;
+	--primary-color: #60899e;
+	--dark-color: #505253;
 	--light-color: #eeeeee;
-	--danger-color: #cf3141;
-	--success-color: #2fb94f;
+	--danger-color: #b62331;
+	--success-color: #45b45f;
 }
 
 body {
@@ -101,6 +101,11 @@ body {
 .border-bot {
 	padding-bottom: 10px;
 	border-bottom: 1px solid rgb(204, 204, 204);
+}
+
+.footer {
+	padding-top: 50px;
+	text-align: center;
 }
 
 .center-horizontal-align {
@@ -425,6 +430,11 @@ button {
 	padding: 0 2rem;
 }
 
+h1 {
+	margin: 0;
+	padding: 0;
+}
+
 .form-container h1,
 h2,
 h3 {
@@ -520,7 +530,7 @@ table th {
 	}
 
 	.navbar h1 {
-		margin-bottom: 0.6rem;
+		margin-bottom: 0rem;
 	}
 
 	.navbar ul {

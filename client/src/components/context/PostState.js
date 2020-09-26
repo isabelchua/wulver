@@ -21,7 +21,12 @@ const PostState = props => {
 	const initialState = {
 		stats: [
 			{ id: 1, date: "09/19/2019", weight: 124 },
-			{ id: 2, date: "09/22/2020", weight: 110 }
+			{ id: 2, date: "01/19/2020", weight: 120 },
+			{ id: 3, date: "03/15/2020", weight: 118 },
+			{ id: 4, date: "06/03/2020", weight: 115 },
+			{ id: 5, date: "07/01/2020", weight: 113 },
+			{ id: 9, date: "02/01/2020", weight: 122 },
+			{ id: 6, date: "09/22/2020", weight: 110 }
 		],
 		currentStat: null,
 		current: null,
@@ -91,16 +96,6 @@ const PostState = props => {
 	const clearCurrent = () => {
 		dispatch({ type: CLEAR_CURRENT });
 	};
-
-	//LOAD USER
-	// const loadUser = async () => {
-	// 	try {
-	// 		const res = await axios.get("api/auth");
-	// 		dispatch({ type: USER_LOADED, payload: res.data });
-	// 	} catch (err) {
-	// 		dispatch({ type: AUTH_ERROR });
-	// 	}
-	// };
 
 	return (
 		<PostContext.Provider
