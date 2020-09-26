@@ -171,7 +171,12 @@ function RecordForm() {
 		<div className="record-form">
 			{!isAuthenticated ? (
 				<div>
-					<h2>Register/Login to save your progress!</h2>
+					<div className="ui info message">
+						<div className="header">
+							<h4>Register/Login to save your progress!</h4>
+						</div>
+					</div>
+
 					<div className="ui grid">
 						<div className="four wide column">Age: 34</div>
 						<div className="four wide column">Goal Weight: 105lbs</div>

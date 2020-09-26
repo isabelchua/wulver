@@ -41,6 +41,10 @@ body {
 	height: 100%;
 } */
 
+h4 {
+	text-align: center;
+}
+
 .record-form {
 	max-width: 1200px;
 	margin: 0 auto;
