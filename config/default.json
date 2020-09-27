@@ -1,0 +1,4 @@
+{
+	"mongoURI": "mongodb+srv://isabel:wulver321@cluster0.lepk6.mongodb.net/wulver?retryWrites=true&w=majority",
+	"jwtSecret": "donttell"
+}
