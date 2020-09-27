@@ -8,7 +8,7 @@ connectDB();
 
 app.use(express.json({ extended: false }));
 
-app.get("/", (req, res) => res.json({ msg: "Welcome to Wulver!" }));
+// app.get("/", (req, res) => res.json({ msg: "Welcome to Wulver!" }));
 
 // define routes
 app.use("/api/users", require("./routes/users"));
