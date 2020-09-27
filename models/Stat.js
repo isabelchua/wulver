@@ -10,6 +10,9 @@ const StatSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
+	mood: {
+		type: String
+	},
 	date: {
 		type: String,
 		required: true
