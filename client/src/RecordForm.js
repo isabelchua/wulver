@@ -77,6 +77,7 @@ function RecordForm() {
 		}
 		//set initial date to today
 		//console.log(form);
+		// eslint-disable-next-line
 	}, [postContext, current]);
 
 	const [form, setForm] = useState({

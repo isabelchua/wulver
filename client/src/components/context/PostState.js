@@ -10,12 +10,9 @@ import {
 	EDIT_POST,
 	POST_ERROR,
 	GET_POSTS,
-	CLEAR_ERRORS,
-	CLEAR_POSTS,
-	USER_LOADED,
-	AUTH_ERROR
+	CLEAR_POSTS
 } from "../types";
-import { nanoid } from "nanoid";
+//import { nanoid } from "nanoid";
 
 const PostState = props => {
 	const initialState = {
