@@ -65,7 +65,7 @@ function RecordForm() {
 	useEffect(() => {
 		setForm({ ...form, date: dateFnsFormat(new Date(), "MM/dd/yyyy") });
 
-		console.log("useeffect " + current);
+		//console.log("useeffect " + current);
 
 		if (current !== null) {
 			setForm(current);
@@ -99,7 +99,7 @@ function RecordForm() {
 	};
 	const onSubmit = e => {
 		e.preventDefault();
-		console.log("current " + current);
+		//console.log("current " + current);
 		if (current === null) {
 			addPost(form);
 		} else {
@@ -175,18 +175,18 @@ function RecordForm() {
 					<div className="ui info message">
 						<div className="header">
 							<h4>
-								Below is a sample graph, Register/Login to experience
+								Below is a sample graph. Register/Login to experience
 								the features and save your progress!
 							</h4>
 						</div>
 					</div>
 
-					<div className="ui grid">
+					{/* <div className="ui grid">
 						<div className="four wide column">Age: 34</div>
 						<div className="four wide column">Goal Weight: 105lbs</div>
 						<div className="four wide column">Height: 5'2"</div>
 						<div className="four wide column">Gender: F</div>
-					</div>
+					</div> */}
 				</div>
 			) : (
 				" "

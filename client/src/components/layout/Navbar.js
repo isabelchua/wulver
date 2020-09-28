@@ -42,11 +42,12 @@ const Navbar = ({ title, icon }) => {
 
 	return (
 		<div className="navbar bg-primary">
-			<a href="/">
-				<h1>
-					<i className="cogs icon" /> Wulver
-				</h1>
-			</a>
+			<div className="logo-wrap">
+				<a href="/" className="logo-wrap">
+					<div className="logo"></div>
+					<h1>Wulver</h1>
+				</a>
+			</div>
 			<ul>{isAuthenticated ? authLinks : guestLinks} </ul>
 		</div>
 	);
