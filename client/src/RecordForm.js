@@ -174,7 +174,10 @@ function RecordForm() {
 				<div>
 					<div className="ui info message">
 						<div className="header">
-							<h4>Register/Login to save your progress!</h4>
+							<h4>
+								Below is a sample graph, Register/Login to experience
+								the features and save your progress!
+							</h4>
 						</div>
 					</div>
 
